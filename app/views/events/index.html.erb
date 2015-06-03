@@ -20,24 +20,24 @@
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Event #<%= event.id %></h3>
+        <h3 class="panel-title"><%= event.name.upcase %></h3>
       </div>
       <div class="panel-body">
         <dl>
           <dt>User</dt>
-          <dd><%= event.user_id %></dd>
+          <dd><%= event.user %></dd>
 
           <dt>Calendar</dt>
-          <dd><%= event.calendar_id %></dd>
+          <dd><%= event.calendar %></dd>
 
           <dt>Name</dt>
           <dd><%= event.name %></dd>
 
           <dt>Starting time</dt>
-          <dd><%= event.starting_time %></dd>
+          <dd><%= local_time(event.starting_time,"%l:%M%P on %B %e, %Y") %></dd>
 
           <dt>Ending time</dt>
-          <dd><%= event.ending_time %></dd>
+          <dd><%= local_time(event.ending_time,"%l:%M%P on %B %e, %Y") %></dd>
 
           <dt>Description</dt>
           <dd><%= event.description %></dd>

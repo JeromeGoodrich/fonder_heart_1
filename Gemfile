@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'local_time'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 gem 'chronic'

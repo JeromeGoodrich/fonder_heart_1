@@ -17,6 +17,7 @@
 //= require_tree .
 //= require moment
 //= require bootstrap-datetimepicker
+//= require local_time
 
 $(function () {
   $('.datetimepicker').datetimepicker();
