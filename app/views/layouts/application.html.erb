@@ -43,13 +43,12 @@
           <li><a href="/comments">Comments</a></li>
           <li><a href="/events">Events</a></li>
           <li><a href="/calendars">Calendars</a></li>
-          <li><a href="/users">Users</a></li>
           <li><a href="#">About</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <% if 1 > 2 %>
-            <li><a href="/users/edit">Oscar the Grouch</a></li>
+          <% if current_user != nil %>
+            <li><a href="/users/edit"><%= current_user.email %></a></li>
             <li><a href="/users/sign_out" data-method="delete" rel="nofollow">Sign out</a></li>
           <% else %>
             <li><a href="/users/sign_up">Sign up</a></li>
