@@ -4,10 +4,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-has_many :calendars
+has_many :invited_calendars, through: :calendar_accesses, :source => :calendar
 has_many :events
 has_many :comments
-belongs_to :calendar
+has_many :calendar_accesses
+has_many :calendars
+
 
 
 end

@@ -1,5 +1,22 @@
 Rails.application.routes.draw do
 
+  # Routes for the Calendar_access resource:
+  # CREATE
+  get "/calendar_accesses/new", :controller => "calendar_accesses", :action => "new"
+  post "/create_calendar_access", :controller => "calendar_accesses", :action => "create"
+
+  # READ
+  get "/calendar_accesses", :controller => "calendar_accesses", :action => "index"
+  get "/calendar_accesses/:id", :controller => "calendar_accesses", :action => "show"
+
+  # UPDATE
+  get "/calendar_accesses/:id/edit", :controller => "calendar_accesses", :action => "edit"
+  post "/update_calendar_access/:id", :controller => "calendar_accesses", :action => "update"
+
+  # DELETE
+  get "/delete_calendar_access/:id", :controller => "calendar_accesses", :action => "destroy"
+  #------------------------------
+
   devise_for :users
   root 'calendars#index'
 

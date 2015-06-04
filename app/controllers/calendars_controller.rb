@@ -13,7 +13,7 @@ class CalendarsController < ApplicationController
 
   def create
     @calendar = Calendar.new
-    @calendar.user_id = params[:user_id]
+    @calendar.user_id = current_user.id
     @calendar.title = params[:title]
     @calendar.description = params[:description]
 

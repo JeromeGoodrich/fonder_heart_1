@@ -13,7 +13,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new
-    @event.user_id = params[:user_id]
+    @event.user_id = current_user.id
     @event.calendar_id = params[:calendar_id]
     @event.name = params[:name]
     @event.starting_time = Chronic.parse(params[:starting_time])
@@ -52,7 +52,9 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     @event.destroy
+  repsond_to do |format|
 
+  end
     redirect_to "/events", :notice => "Event deleted."
   end
 end
