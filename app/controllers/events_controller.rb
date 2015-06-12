@@ -21,7 +21,7 @@ class EventsController < ApplicationController
     @event.description = params[:description]
 
     if @event.save
-      redirect_to "/events", :notice => "Event created successfully."
+      redirect_to "/calendars/#{@event.calendar_id}", :notice => "Event created successfully."
     else
       render 'new'
     end

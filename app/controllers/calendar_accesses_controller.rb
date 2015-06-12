@@ -17,7 +17,7 @@ class CalendarAccessesController < ApplicationController
     @calendar_access.calendar_id = params[:calendar_id]
 
     if @calendar_access.save
-      redirect_to "/calendar_accesses", :notice => "Calendar access created successfully."
+      redirect_to "/calendars/#{@calendar_access.calendar_id}", :notice => "calendar shared successfully."
     else
       render 'new'
     end

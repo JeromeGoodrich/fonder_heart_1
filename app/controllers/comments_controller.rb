@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
     @comment.body = params[:body]
 
     if @comment.save
-      redirect_to "/comments", :notice => "Comment created successfully."
+      redirect_to "/calendars/#{params[:id]}", :notice => "Comment created successfully."
     else
       render 'new'
     end
