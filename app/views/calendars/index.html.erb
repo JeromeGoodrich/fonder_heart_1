@@ -19,38 +19,18 @@
   <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="my_calendars">
+    <br>
       <div class="row isotope-container">
       <% @calendars.each do |calendar| %>
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
           <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= calendar.title %></h3>
+        <a class="btn btn-primary btn-block btn-lg" href="calendars/<%= calendar.id %>" role="button">
+          <h3 class="panel-title"><%= calendar.title.upcase %></h3>
+        </a>
       </div>
       <div class="panel-body">
-        <dl>
-          <dt>User</dt>
-          <dd><%= calendar.user.email %></dd>
-
-          <dt>Title</dt>
-          <dd><%= calendar.title %></dd>
-
-          <dt>Description</dt>
-          <dd><%= calendar.description %></dd>
-
-        </dl>
-        <div class="btn-group btn-group-justified">
-          <a href="/calendars/<%= calendar.id %>" class="btn btn-primary">
-            <i class="fa fa-search-plus"></i>
-          </a>
-
-          <a href="/calendars/<%= calendar.id %>/edit" class="btn btn-warning">
-            <i class="fa fa-edit"></i>
-          </a>
-
-          <a href="/delete_calendar/<%= calendar.id %>" class="btn btn-danger" rel="nofollow">
-            <i class="fa fa-trash-o"></i>
-          </a>
-        </div>
+        <p class="text-center"><%= calendar.description %></p>
       </div>
     </div>
   </div>
@@ -60,38 +40,19 @@
 <h1>Create a new calendar to get started</h1>
 <% end %>
 </div>
-    <div role="tabpanel" class="tab-pane" id="shared_with_me"><div class="row isotope-container">
+    <div role="tabpanel" class="tab-pane" id="shared_with_me">
+    <div class="row isotope-container">
+    <br>
       <% @shared_calendars.each do |shared_calendar| %>
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
           <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= shared_calendar.calendar.title %></h3>
+        <a class="btn btn-primary btn-block btn-lg" href="calendars/<%= shared_calendar.calendar_id %>" role="button">
+          <h3 class="panel-title"><%= shared_calendar.calendar.title.upcase %></h3>
+        </a>
       </div>
       <div class="panel-body">
-        <dl>
-          <dt>User</dt>
-          <dd><%= shared_calendar.user.email %></dd>
-
-          <dt>Title</dt>
-          <dd><%= shared_calendar.calendar.title %></dd>
-
-          <dt>Description</dt>
-          <dd><%= shared_calendar.calendar.description %></dd>
-
-        </dl>
-        <div class="btn-group btn-group-justified">
-          <a href="/calendars/<%= shared_calendar.calendar.id %>" class="btn btn-primary">
-            <i class="fa fa-search-plus"></i>
-          </a>
-
-          <a href="/calendars/<%= shared_calendar.calendar.id %>/edit" class="btn btn-warning">
-            <i class="fa fa-edit"></i>
-          </a>
-
-          <a href="/delete_calendar/<%= shared_calendar.calendar.id %>" class="btn btn-danger" rel="nofollow">
-            <i class="fa fa-trash-o"></i>
-          </a>
-        </div>
+        <p class="text-center"><%= shared_calendar.calendar.description %></p>
       </div>
     </div>
   </div>

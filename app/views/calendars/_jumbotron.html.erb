@@ -1,12 +1,12 @@
 <div class="jumbotron">
-  <h1><%= @calendar.title %>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#eventform" aria-expanded="false" aria-controls="collapseExample">
+  <h1 class="text-center"><%= @calendar.title.upcase %><small> Events </small></h1>
+  <div class="col-md-offset-4 col-md-4">
+  <button class="btn btn-primary btn-centered" type="button" data-toggle="collapse" data-target="#eventform" aria-expanded="false" aria-controls="collapseExample">
   Create an Event
   <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#share_calendar_form" aria-expanded="false" aria-controls="collapseExample">
   Share this Calendar
   </button>
-  </h1>
-  <p><%= @calendar.description %></p>
+  </div>
 </div>
 
 <!-- Validation failure messages -->
