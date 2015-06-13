@@ -16,6 +16,7 @@ class CalendarsController < ApplicationController
     @calendar.user_id = current_user.id
     @calendar.title = params[:title]
     @calendar.description = params[:description]
+    @calendar.image = params[:image]
 
     if @calendar.save
       redirect_to "/calendars/#{@calendar.id}", :notice => "Calendar created successfully."

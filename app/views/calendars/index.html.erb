@@ -30,6 +30,7 @@
         </a>
       </div>
       <div class="panel-body">
+        <img src="<%=calendar.image %>" href="calendars/<%= calendar.id %>" class="img-responsive">
         <p class="text-center"><%= calendar.description %></p>
       </div>
     </div>
@@ -52,6 +53,7 @@
         </a>
       </div>
       <div class="panel-body">
+        <img src="<%= shared_calendar.calendar.image %>" href="calendars/<%= shared_calendar.calendar.id %>" class="img-responsive">
         <p class="text-center"><%= shared_calendar.calendar.description %></p>
       </div>
     </div>
