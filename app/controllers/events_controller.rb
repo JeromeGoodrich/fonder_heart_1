@@ -19,6 +19,7 @@ class EventsController < ApplicationController
     @event.starting_time = Chronic.parse(params[:starting_time])
     @event.ending_time = Chronic.parse(params[:ending_time])
     @event.description = params[:description]
+    @event.image = params[:image]
 
     if @event.save
       redirect_to "/calendars/#{@event.calendar_id}", :notice => "Event created successfully."

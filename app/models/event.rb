@@ -8,7 +8,7 @@ has_many :comments, dependent: :destroy
 belongs_to :calendar
 belongs_to :user
 
-
+mount_uploader :image, ImageUploader
 
 
 end
