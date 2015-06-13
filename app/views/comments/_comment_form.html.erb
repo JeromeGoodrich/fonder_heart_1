@@ -1,0 +1,36 @@
+
+
+<div class="row">
+  <div class="col-sm-offset-8 col-sm-4 col-md-offset-6 col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Add Comment</h3>
+      </div>
+      <div class="panel-body">
+        <form action="/create_comment" method="post" class="form-horizontal">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+          <div class="form-group">
+            <div class="col-sm-10">
+              <input name="user_id" type="hidden" value="<%= current_user.id %>">
+              <input name="calendar_id" type="hidden" value="<%= params[:id] %>">
+              <input name="event_id" type="hidden" value="<%= event.id %>">
+              <textarea id="body" name="body" placeholder="Body" class="form-control" rows="3"><%= @comment.body %></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button class="btn btn-success">
+                Create Comment
+              </button>
+              or
+              <a href="/comments">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
