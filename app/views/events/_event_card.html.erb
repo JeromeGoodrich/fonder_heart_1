@@ -1,13 +1,10 @@
 
-
 <div class="row isotope-container">
   <% @events.each do |event| %>
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <button type="button" class="btn btn-primary btn-block btn-lg" data-toggle="modal" data-target=".event_<%= event.id %>">
-          <h3 class="panel-title"><%= event.name.upcase %></h3>
-        </button>
+      <a class="btn btn-default" href="/events/<%= event.id %>" role="button"><h3 class="panel-title"><%= event.name.upcase %></h3></a>
       </div>
       <div class="panel-body">
         <img src="<%= event.image %>" class="img-responsive">

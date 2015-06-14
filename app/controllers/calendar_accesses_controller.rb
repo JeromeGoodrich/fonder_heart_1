@@ -1,6 +1,6 @@
 class CalendarAccessesController < ApplicationController
   def index
-    @calendar_accesses = CalendarAccess.all
+    @calendar_accesses = current_user.calendar_accesses
   end
 
   def show

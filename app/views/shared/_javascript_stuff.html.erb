@@ -1,18 +1,3 @@
-<%= render 'events/event_alert' %>
-
-<%= render 'jumbotron' %>
-
-<%= render 'share_calendar_form' %>
-
-<%= render 'events/event_form' %>
-
-<% @events = Event.where(:calendar_id => params[:id]) %>
-
-<%= render 'events/event_card' %>
-
-<%= render 'events/event_modal' %>
-
-
 <!-- You can ignore the following. It's a quick and dirty example of how to get a Pinterest-style layout with quick search. -->
 <!-- JavaScript for Isotope layout and quicksearch -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>

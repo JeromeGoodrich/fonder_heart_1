@@ -6,7 +6,7 @@
 </div>
 <% if @calendars.count != 0  %>
 
-<% @shared_calendars = current_user.calendar_accesses %>
+
 
 <div role="tabpanel">
 
@@ -41,6 +41,8 @@
 <h1>Create a new calendar to get started</h1>
 <% end %>
 </div>
+
+<% @shared_calendars = current_user.calendar_accesses %>
     <div role="tabpanel" class="tab-pane" id="shared_with_me">
     <div class="row isotope-container">
     <br>

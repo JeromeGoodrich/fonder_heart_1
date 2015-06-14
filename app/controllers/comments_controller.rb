@@ -17,9 +17,10 @@ class CommentsController < ApplicationController
     @comment.calendar_id = params[:calendar_id]
     @comment.event_id = params[:event_id]
     @comment.body = params[:body]
+    @comment.activity_id = params[:activity_id]
 
     if @comment.save
-      redirect_to "/calendars/#{@comment.calendar_id}", :notice => "Comment created successfully."
+      redirect_to "/events/#{@comment.event_id}", :notice => "Comment created successfully."
     else
       render 'new'
     end
