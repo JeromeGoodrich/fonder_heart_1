@@ -1,12 +1,16 @@
 <div class="page-header">
   <h1>
     Welcome <%= current_user.username %>
-    <a href="/calendars/new" class="btn btn-lg btn-success"><i class="fa fa-plus"> Create a Calendar</i></a>
+    <button class="btn btn-success btn-centered" type="button" data-toggle="collapse" data-target="#calendar_form" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-plus"> Create Calendar</i>
+  </button>
   </h1>
 </div>
+
+<%= render "calendar_alert" %>
+
+<%= render "calendar_form" %>
+
 <% if @calendars.count != 0  %>
-
-
 
 <div role="tabpanel">
 
@@ -25,12 +29,13 @@
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
           <div class="panel panel-default">
       <div class="panel-heading">
-        <a class="btn btn-primary btn-block btn-lg" href="calendars/<%= calendar.id %>" role="button">
+        <a class="btn btn-primary btn-block btn-lg" href="calendars/<%= calendar.id %>" role="button"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
           <h3 class="panel-title"><%= calendar.title.upcase %></h3>
         </a>
       </div>
-      <div class="panel-body">
-        <img src="<%=calendar.image %>" href="calendars/<%= calendar.id %>" class="img-responsive">
+      <div class="media">
+        <a href="calendars/<%= calendar.id %>">
+        <img src="<%=calendar.image %>" class="img-responsive"></a>
         <p class="text-center"><%= calendar.description %></p>
       </div>
     </div>
@@ -38,7 +43,7 @@
 <% end %>
 </div>
 <% else %>
-<h1>Create a new calendar to get started</h1>
+<h1>Create a calendar to get started</h1>
 <% end %>
 </div>
 
@@ -66,50 +71,4 @@
 
 </div>
 
-<!-- You can ignore the following. It's a quick and dirty example of how to get a Pinterest-style layout with quick search. -->
-<!-- JavaScript for Isotope layout and quicksearch -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.0.0/isotope.pkgd.min.js"></script>
-<script>
-  $(function() {
-    // quick search regex
-    var qsRegex;
-
-    // init Isotope
-    var $container = $('.isotope-container');
-
-    $container.imagesLoaded(function() {
-      $container.isotope({
-        itemSelector: '.isotope-item',
-        layoutMode: 'masonry',
-        filter: function() {
-          return qsRegex ? $(this).text().match( qsRegex ) : true;
-        }
-      })
-    });
-
-    // use value of search field to filter
-    var $quicksearch = $('#quicksearch').keyup( debounce( function() {
-      qsRegex = new RegExp( $quicksearch.val(), 'gi' );
-      $container.isotope();
-    }, 200 ) );
-
-  });
-
-  // debounce so filtering doesn't happen every millisecond
-  function debounce( fn, threshold ) {
-    var timeout;
-    return function debounced() {
-      if ( timeout ) {
-        clearTimeout( timeout );
-      }
-      function delayed() {
-        fn();
-        timeout = null;
-      }
-      timeout = setTimeout( delayed, threshold || 100 );
-    }
-  }
-</script>
-
-<!-- End responsive, Isotope-based layout example -->
+<%= render "shared/javascript_stuff" %>

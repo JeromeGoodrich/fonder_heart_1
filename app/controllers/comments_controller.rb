@@ -1,4 +1,15 @@
 class CommentsController < ApplicationController
+
+  before_action :ensure_current_user, :only => [:index, :show, :edit, :update, :destroy]
+
+  def ensure_current_user
+    @comments = Comment.find(params[:id])
+    if @comments.user_id != current_user.id
+      redirect_to root_url, :alert => "Sorry, you are not authorized to view this page"
+    end
+
+  end
+
   def index
     @comments = Comment.all
   end

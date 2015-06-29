@@ -1,6 +1,5 @@
 class Activity < ActiveRecord::Base
 
-validates :user_id, presence: true
 validates :name, presence: true
 validates :starting_time, presence: true
 validates :ending_time, presence: true

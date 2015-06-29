@@ -1,0 +1,13 @@
+<%= render 'events/event_alert' %>
+
+<%= render 'jumbotron' %>
+
+<%= render 'share_calendar_form' %>
+
+<%= render 'events/event_form' %>
+
+<% @events = Event.where(:calendar_id => params[:id]) %>
+
+<%= render 'events/event_card' %>
+
+<%= render 'shared/javascript_stuff' %>

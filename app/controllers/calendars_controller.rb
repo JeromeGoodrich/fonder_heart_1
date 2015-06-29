@@ -1,4 +1,16 @@
 class CalendarsController < ApplicationController
+
+  before_action :ensure_current_user, :only => [:show, :edit, :update, :destroy]
+
+  def ensure_current_user
+    @calendars = Calendar.find(params[:id])
+    if @calendars.user_id != current_user.id
+      redirect_to root_url, :alert => "Sorry, you are not authorized to view this page"
+    end
+
+  end
+
+
   def index
     @calendars = current_user.calendars
   end
