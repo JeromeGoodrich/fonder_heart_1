@@ -47,51 +47,51 @@
             <ul class="dropdown-menu" role="menu">
               <% @calendars = current_user.calendars %>
               <% @calendars.each do |calendar| %>
-              <li><a href="/calendars/<%= calendar.id %>"><%= calendar.title %></a></li>
-              <% end %>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Calendars Shared with Me <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <% @shared_calendars = current_user.calendar_accesses %>
-              <% @shared_calendars.each do |shared_calendar| %>
-              <li><a href="/calendars/<%= shared_calendar.calendar_id %>"><%= shared_calendar.calendar.title %></a></li>
-              <% end %>
-            </ul>
-          </li>
-        </ul>
+              <li><a href="/calendars/<%= calendar.id %>"><%= calendar.title %><a href="calendars/<%= calendar.id %>/edit" class="text-right"><i class="fa fa-edit"></i></a><a href="/delete_calendar/<%= calendar.id %>" class="text-right"><i class="fa fa-trash-o"></i></a></a></li>
+            <% end %>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Calendars Shared with Me <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <% @shared_calendars = current_user.calendar_accesses %>
+            <% @shared_calendars.each do |shared_calendar| %>
+            <li><a href="/calendars/<%= shared_calendar.calendar_id %>"><%= shared_calendar.calendar.title %></a></li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+      <% else %>
+      <% end %>
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user != nil %>
+        <li><a href="/users/edit">My Profile</a></li>
+        <li><a href="/users/sign_out" data-method="delete" rel="nofollow">Sign out</a></li>
         <% else %>
+        <li><a href="/users/sign_up">Sign up</a></li>
+        <li><a href="/users/sign_in">Sign in</a></li>
         <% end %>
-        <ul class="nav navbar-nav navbar-right">
-          <% if current_user != nil %>
-            <li><a href="/users/edit">My Profile</a></li>
-            <li><a href="/users/sign_out" data-method="delete" rel="nofollow">Sign out</a></li>
-          <% else %>
-            <li><a href="/users/sign_up">Sign up</a></li>
-            <li><a href="/users/sign_in">Sign in</a></li>
-          <% end %>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div>
-  </nav>
-
-  <div class="container">
-    <% if notice.present? %>
-      <div class="alert alert-dismissable alert-success">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <%= notice %>
-      </div>
-    <% end %>
-
-    <% if alert.present? %>
-      <div class="alert alert-dismissable alert-warning">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <%= alert %>
-      </div>
-    <% end %>
-
-    <%= yield %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
   </div>
+</nav>
+
+<div class="container">
+  <% if notice.present? %>
+  <div class="alert alert-dismissable alert-success">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <%= notice %>
+  </div>
+  <% end %>
+
+  <% if alert.present? %>
+  <div class="alert alert-dismissable alert-warning">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <%= alert %>
+  </div>
+  <% end %>
+
+  <%= yield %>
+</div>
 </body>
 </html>
