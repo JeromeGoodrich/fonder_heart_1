@@ -44,12 +44,12 @@ class CalendarsController < ApplicationController
   def update
     @calendar = Calendar.find(params[:id])
 
-    @calendar.user_id = params[:user_id]
+    @calendar.user_id = current_user.id
     @calendar.title = params[:title]
     @calendar.description = params[:description]
 
     if @calendar.save
-      redirect_to "/calendars/" => "Calendar updated successfully."
+      redirect_to "/calendars/#{@calendar.id}", :notice => "Calendar updated successfully."
     else
       render 'edit'
     end

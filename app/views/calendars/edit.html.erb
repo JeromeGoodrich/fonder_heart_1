@@ -1,13 +1,4 @@
-<!-- Validation failure messages -->
 
-<% if @calendar.errors.any? %>
-  <% @calendar.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
-<% end %>
 
 <!-- Responsive panel example -->
 
@@ -15,22 +6,12 @@
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Edit Calendar #<%= @calendar.id %></h3>
+        <h3 class="panel-title">Edit <%= @calendar.title %> Calendar</h3>
       </div>
       <div class="panel-body">
-        <form action="/update_calendar/<%= @calendar.id %>" method="post" class="form-horizontal">
+        <form action= "/update_calendar/<%= @calendar.id %>" method="post" enctype="multipart/form-data" class="form-horizontal">
           <!-- Hidden input for authenticity token to protect from forgery -->
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
-          <!-- Label and input for user_id -->
-          <div class="form-group">
-            <label for="user_id" class="col-sm-2 control-label">
-              User
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @calendar.user_id %>">
-            </div>
-          </div>
 
           <!-- Label and input for title -->
           <div class="form-group">
@@ -53,6 +34,15 @@
           </div>
 
           <div class="form-group">
+            <label for="image" class="col-sm-2 control-label">
+              Image
+            </label>
+            <div class="col-sm-10">
+              <input type="file" id="image" name="image" class="form-control" value="<%= @calendar.image %>">
+            </div>
+          </div>
+
+          <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
               <button class="btn btn-warning">
                 Update Calendar
@@ -67,5 +57,5 @@
   </div>
 </div>
 
-
+<%= render 'calendar_alert' %>
 <!-- End responsive panel example -->
