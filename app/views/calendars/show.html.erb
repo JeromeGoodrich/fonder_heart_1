@@ -1,13 +1,19 @@
-<%= render 'events/event_alert' %>
+<div class="container">
+<%= render 'countdown' %>
+<br>
+</div>
 
-<%= render 'jumbotron' %>
+    <div class ="row">
+        <% @events = Event.where(:user_id => "#{current_user.id}", :calendar_id => "#{@calendar.id}") %>
+        <% @events.each do |event| %>
 
-<%= render 'share_calendar_form' %>
+        <%= render partial: 'events', locals: {event: event} %>
 
-<%= render 'events/event_form' %>
+        <%= render partial: '/events/activity_form', locals: {event: event} %>
 
-<% @events = Event.where(:calendar_id => params[:id]) %>
+        <%= render partial: 'activities', locals: {event: event} %>
 
-<%= render 'events/event_card' %>
+        <% end %>
+    </div>
 
-<%= render 'shared/javascript_stuff' %>
+

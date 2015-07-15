@@ -33,7 +33,7 @@ class ActivitiesController < ApplicationController
     @activity.image = params[:image]
 
     if @activity.save
-      redirect_to "/events/#{@activity.event_id}", :notice => "Activity created successfully."
+      redirect_to "/events", :notice => "Activity created successfully."
     else
       render 'new'
     end

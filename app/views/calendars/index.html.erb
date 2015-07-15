@@ -1,74 +1,29 @@
-<div class="page-header">
-  <h1>
-    Welcome <%= current_user.username %>
-    <button class="btn btn-success btn-centered" type="button" data-toggle="collapse" data-target="#calendar_form" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-plus"> Create Calendar</i>
-  </button>
-  </h1>
-</div>
 
-<%= render "calendar_alert" %>
-
-<%= render "calendar_form" %>
-
-<% if @calendars.count != 0  %>
-
-<div role="tabpanel">
-
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#my_calendars" aria-controls="my_calendars" role="tab" data-toggle="tab">My Calendars</a></li>
-    <li role="presentation"><a href="#shared_with_me" aria-controls="shared_with_mw" role="tab" data-toggle="tab">Shared With Me</a></li>
-  </ul>
-
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="my_calendars">
-    <br>
-      <div class="row isotope-container">
-      <% @calendars.each do |calendar| %>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
-          <div class="panel panel-default">
-      <div class="panel-heading">
-        <a class="btn btn-primary btn-block btn-lg" href="calendars/<%= calendar.id %>" role="button"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-          <h3 class="panel-title"><%= calendar.title.upcase %></h3>
-        </a>
+<div class="container">
+  <div class="row">
+    <h1>Howdy <%= current_user.username %></h1>
+      <div class="col-md-3 col-md-offset-5">
+        <div class="btn-group" role="group">
+        <button class="btn btn-default btn-large "  type="button"><i class="fa fa-plus fa-lg"></i> Event</button>
+        <button class="btn btn-default btn-large " type="button"><i class="fa fa-plus fa-lg"></i> | <i class="fa fa-edit fa-lg"></i>  Calendar</button>
+        </div>
       </div>
-      <div class="media">
-        <a href="calendars/<%= calendar.id %>">
-        <img src="<%= calendar.image %>" class="img-responsive"></a>
-        <p class="text-center"><%= calendar.description %></p>
-      </div>
+
+    </div>
+
+  <div class="row"
+    <div class="col-md-12">
+    <% @calendars.each do |calendar| %>
+    <%= render partial: 'tab_content', locals: {calendar: calendar} %>
+    <% end %>
     </div>
   </div>
-<% end %>
-</div>
-<% else %>
-<h1>Create a calendar to get started</h1>
-<% end %>
 </div>
 
-<% @shared_calendars = current_user.calendar_accesses %>
-    <div role="tabpanel" class="tab-pane" id="shared_with_me">
-    <div class="row isotope-container">
-    <br>
-      <% @shared_calendars.each do |shared_calendar| %>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
-          <div class="panel panel-default">
-      <div class="panel-heading">
-        <a class="btn btn-primary btn-block btn-lg" href="calendars/<%= shared_calendar.calendar_id %>" role="button">
-          <h3 class="panel-title"><%= shared_calendar.calendar.title.upcase %></h3>
-        </a>
-      </div>
-      <div class="panel-body">
-        <img src="<%= shared_calendar.calendar.image %>" href="calendars/<%= shared_calendar.calendar.id %>" class="img-responsive">
-        <p class="text-center"><%= shared_calendar.calendar.description %></p>
-      </div>
-    </div>
-  </div>
-<% end %>
+
+
 </div>
 </div>
 
-</div>
 
-<%= render "shared/javascript_stuff" %>
+

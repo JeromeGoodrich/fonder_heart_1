@@ -11,6 +11,7 @@ class EventsController < ApplicationController
 
   def index
     @events = current_user.events
+    @calendars = current_user.calendars
   end
 
   def show
