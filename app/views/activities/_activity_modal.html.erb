@@ -15,7 +15,7 @@
 
         <% @comments = Comment.where(:user_id => "#{current_user.id}", :event_id => "#{params[:id]}", :activity_id => "#{activity.id}") %>
 
-        <%= render 'activities/activity_comments' %>
+        <%= render 'comments/activity_comments' %>
 
         <% @activity = activity %>
 

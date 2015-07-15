@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   #------------------------------
 
   devise_for :users
-  root 'calendars#index'
+  root 'activities#index'
 
   # Routes for the Comment resource:
   # CREATE

@@ -47,7 +47,10 @@
             <ul class="dropdown-menu" role="menu">
               <% @calendars = current_user.calendars %>
               <% @calendars.each do |calendar| %>
-              <li><a href="/calendars/<%= calendar.id %>"><%= calendar.title %><a href="/calendars/<%= calendar.id %>/edit" class="text-right"><i class="fa fa-edit"></i></a><a href="/delete_calendar/<%= calendar.id %>" class="text-right"><i class="fa fa-trash-o"></i></a></a></li>
+              <li><a href="/calendars/<%= calendar.id %>"><%= calendar.title %></a></li>
+              <li><a href="/calendars/<%= calendar.id %>/edit" class="text-right"><i class="fa fa-edit"></i></a>
+              <li><a href="/delete_calendar/<%= calendar.id %>" class="text-right"><i class="fa fa-trash-o"></i></a>
+              </li>
             <% end %>
           </ul>
         </li>

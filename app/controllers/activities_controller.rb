@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  before_action :ensure_current_user, :only => [:index, :show, :edit, :update, :destroy]
+  before_action :ensure_current_user, :only => [:show, :edit, :update, :destroy]
 
   def ensure_current_user
     @activities = Activity.find(params[:id])

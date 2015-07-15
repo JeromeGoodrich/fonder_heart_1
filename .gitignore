@@ -15,3 +15,7 @@
 /log/*
 !/log/.keep
 /tmp
+
+app/views/activities/_activity_comments.html.erb
+
+app/views/comments/_activity_comments.html.erb

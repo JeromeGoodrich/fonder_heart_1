@@ -24,17 +24,19 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new
-    @comment.user_id = params[:user_id]
+    @comment.user_id = current_user.id
     @comment.calendar_id = params[:calendar_id]
     @comment.event_id = params[:event_id]
     @comment.body = params[:body]
     @comment.activity_id = params[:activity_id]
 
-    if @comment.save
-      redirect_to "/events/#{@comment.event_id}", :notice => "Comment created successfully."
-    else
-      render 'new'
+    respond_to do |format|
+      if @comment.save
+        format.html {redirect_to "/events/#{@comment.event_id}", :notice => "Comment created successfully."}
+        format.js
+      end
     end
+
   end
 
   def edit
@@ -64,3 +66,4 @@ class CommentsController < ApplicationController
     redirect_to "/comments", :notice => "Comment deleted."
   end
 end
+
