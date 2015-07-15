@@ -7,6 +7,7 @@ validates :ending_time, presence: true
 has_many :comments
 belongs_to :event
 belongs_to :user
+bleong_to :calendar
 
 mount_uploader :image, ImageUploader
 
