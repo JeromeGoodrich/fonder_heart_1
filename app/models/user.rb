@@ -9,6 +9,7 @@ has_many :events
 has_many :comments
 has_many :calendar_accesses, dependent: :destroy
 has_many :calendars
+has_many :activities
 
 
 

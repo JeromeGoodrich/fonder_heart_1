@@ -11,7 +11,7 @@ class ActivitiesController < ApplicationController
 
 
   def index
-    @activities = current_users.activities
+    @activities = current_user.activities
   end
 
   def show

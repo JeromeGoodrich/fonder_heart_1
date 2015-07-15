@@ -1,17 +1,16 @@
 class EventsController < ApplicationController
 
-  before_action :ensure_current_user, :only => [:index, :show, :edit, :update, :destroy]
+  before_action :ensure_current_user, :only => [:show, :edit, :update, :destroy]
 
   def ensure_current_user
     @events = Event.find(params[:id])
     if @events.user_id != current_user.id
       redirect_to root_url, :alert => "Sorry, you are not authorized to view this page"
     end
-
   end
 
   def index
-    @events = Event.all
+    @events = current_user.events
   end
 
   def show
