@@ -1,17 +1,33 @@
+<div class="container">
 <div class="row">
-  <div class="col-md-12">
   <div class="jumbotron">
+    <div class="col-md-12">
     <h1 class="text-center"><%= @calendar.title %></h1>
     <h1>Next Event In:<small> __Days __ Hours __ Minutes</small></h1>
+    </div>
+    <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+    <div class="btn-group" role="group">
+      <button class="btn btn-default btn-large" type="button" data-toggle="modal" data-target="#calendar_modal"><i class="fa fa-plus fa-lg"></i> New Calendar</button>
+      <button class="btn btn-default btn-large" type="button" data-toggle="modal" data-target="#edit_modal"><i class="fa fa-edit fa-lg"></i> Edit Calendar</button>
+      <button class="btn btn-default btn-large" type="button" data-toggle="modal" data-target="#share_calendar_modal"><i class="fa fa-share-square-o fa-lg"></i> Share Calendar</button>
+    </div>
+    </div>
   </div>
   </div>
-    <div class ="col-md-3 col-md-offset-5">
-    <br>
-      <div class="btn-group" role="group">
-        <button class="btn btn-default btn-large" type="button"><i class="fa fa-plus fa-lg"></i> Event</button>
-        <button class="btn btn-default btn-large" type="button"><i class="fa fa-plus fa-lg"></i> | <i class="fa fa-edit fa-lg"></i>  Calendar</button>
+  <div class="row">
+    <div class ="col-md-12">
+      <div class="col-md-2 col-md-offset-5">
+      <button class="btn btn-primary btn-large btn-block" type="button" data-toggle="collapse" data-target="#eventform" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-plus fa-lg"></i> New Event</button>
       </div>
     </div>
   </div>
 </div>
-</div>
+
+<%= render partial: 'modal' %>
+
+<%= render partial: 'edit_modal' %>
+
+<%= render partial: '/events/form' %>
+
+<%= render partial: 'share_modal' %>

@@ -8,17 +8,17 @@
       <img class="img-circle" width="64" height="64" src="<%= event.image %>" alt="...">
     </td>
 
-    <td class="col-md-1">
-      <a href="#"><i class="fa fa-edit fa-lg"></i></a>
+    <td class="col-md-3">
+      <h3><a href="#event_edit_modal" data-toggle="modal" data-target="#event_edit_modal"><i class="fa fa-edit"></i></a> <%= event.name %></h3>
     </td>
 
     <td class="col-md-3">
-      <h5><strong><%= event.name %></strong> <%= local_time(event.starting_time,"%B %e, at %l:%M%P") %> - <%= local_time(event.ending_time,"%B %e, at %l:%M%P") %></h5>
+      <h5><%= local_time(event.starting_time,"%B %e, at %l:%M%P") %> - <%= local_time(event.ending_time,"%B %e, at %l:%M%P") %></h5>
     </td>
 
     <td class="col-md-2">
       <div class="btn-group" role="group" aria-label="...">
-        <button type="button" class="btn btn-default b" data-toggle="collapse" href="#event_collapse_<%= event.id %>" aria-expanded="false" aria-controls="collapseExample">
+        <button type="button" class="btn btn-default" data-toggle="collapse" href="#event_collapse_<%= event.id %>" aria-expanded="false" aria-controls="collapseExample">
           <% @activities.each do |activity| %>
           <% activity_count.push activity %>
           <% end %>
@@ -29,3 +29,5 @@
     </td>
   </tr>
 </table>
+
+<%= render partial: '/events/edit_modal' %>

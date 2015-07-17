@@ -26,11 +26,11 @@ class CalendarsController < ApplicationController
   def create
     @calendar = Calendar.new
     @calendar.user_id = current_user.id
-    @calendar.title = params[:title]
+    @calendar.title = params[:calendar][:title]
     @calendar.description = params[:description]
     @calendar.image = params[:image]
 
-    if @calendar.save
+    if @calendar.save!
       redirect_to "/calendars/#{@calendar.id}", :notice => "Calendar created successfully."
     else
       render 'new'
@@ -45,7 +45,7 @@ class CalendarsController < ApplicationController
     @calendar = Calendar.find(params[:id])
 
     @calendar.user_id = current_user.id
-    @calendar.title = params[:title]
+    @calendar.title = params[:calendar][:title]
     @calendar.description = params[:description]
 
     if @calendar.save

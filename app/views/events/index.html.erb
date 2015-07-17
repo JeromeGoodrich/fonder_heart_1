@@ -1,8 +1,25 @@
+
+<div class="container">
+  <h1>Howdy <%= current_user.username %></h1>
+
+  <div class="row">
+    <div class="col-md-12">
+    <% @calendars.each do |calendar| %>
+      <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="calendar_tab_<%= calendar.id %>" aria-controls="home" role="tab" data-toggle="tab"><%= calendar.title %></a></li>
+      </ul>
+    <% end %>
+    </div>
+  </div>
+
+  <% @calendars.each do |calendar| %>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="calendar_tab_<%= calendar.id %>">
       <div class ="row">
         <div class ="col-md-12">
           <br>
           <ul class="media-list">
-          <% @events = Event.where(:user_id => "#{current_user.id}", :calendar_id => "#{calendar.id}") %>
+
             <% @events.each do |event| %>
             <% @activities = Activity.where(:user_id => "#{current_user.id}", :event_id => "#{event.id}") %>
             <li class="media">
@@ -11,7 +28,7 @@
               </div>
 
               <div class="media-body">
-                <h4 class="media-heading"><strong><%= event.name %></strong> <%= local_time(event.starting_time,"%B %e, %Y at %l:%M%P") %> - <%= local_time(event.ending_time,"%B %e, %Y at %l:%M%P") %> <a href="#"><i class="fa fa-edit fa-lg"></i></a></h4>
+                <h4 class="media-heading"><strong><%= event.name %></strong> <%= local_time(event.starting_time,"%B %e, %Y at %l:%M%P") %> - <%= local_time(event.ending_time,"%B %e, %Y at %l:%M%P") %></h4>
                 <% activity_count = [] %>
                 <div class="btn-group" role="group" aria-label="...">
 
@@ -25,7 +42,7 @@
                   </button>
                   <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#activity_form_<%= event.id  %>"><i class="fa fa-plus"></i> Activity</button> Next activity in: __ Days __ Hours and __ minutes
                 </div>
-                <%= render partial: '/events/activity_form', locals: {event: event} %>
+                <%= render partial: 'activity_form', locals: {event: event} %>
                 <div class="collapse" id="event_collapse_<%= event.id %>">
                   <ul class="list-group">
                     <% @activities.each do |activity| %>
@@ -45,3 +62,16 @@
         </div>
       </div>
     </div>
+    <% end  %>
+    <div role="tabpanel" class="tab-pane" id="profile">...</div>
+    <div role="tabpanel" class="tab-pane" id="messages">...</div>
+    <div role="tabpanel" class="tab-pane" id="settings">...</div>
+  </div>
+
+
+
+</div>
+</div>
+
+
+

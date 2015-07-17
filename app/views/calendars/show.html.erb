@@ -1,9 +1,8 @@
-<div class="container">
+
 <%= render 'countdown' %>
 <br>
-</div>
 
-    <div class ="row">
+
         <% @events = Event.where(:user_id => "#{current_user.id}", :calendar_id => "#{@calendar.id}") %>
         <% @events.each do |event| %>
 
@@ -14,6 +13,6 @@
         <%= render partial: 'activities', locals: {event: event} %>
 
         <% end %>
-    </div>
+
 
 

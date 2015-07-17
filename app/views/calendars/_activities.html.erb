@@ -4,11 +4,15 @@
             <% @activities.each do |activity| %>
             <tr>
               <td>
-                <a href="#"><i class="fa fa-edit fa-lg"></i></a>
+                <a href="/activities/<%= activity.id %>/edit"><i class="fa fa-edit fa-lg"></i></a>
               </td>
 
               <td>
-                <h5><strong><%= activity.name %></strong> <%= local_time(activity.starting_time," from %B %e  at %l:%M%P") %> - <%= local_time(event.ending_time," till %B %e at %l:%M%P") %></h5>
+                <h4><strong><%= activity.name %></strong></h4>
+              </td>
+
+              <td>
+                <h4><%= local_time(activity.starting_time," from %B %e  at %l:%M%P") %> - <%= local_time(event.ending_time," till %B %e at %l:%M%P") %></h4>
               </td>
 
               <td>
