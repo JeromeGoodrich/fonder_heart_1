@@ -6,6 +6,7 @@
         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
+        <% @calendar_access = CalendarAccess.new %>
         <%= render partial: 'share_calendar_form' %>
       </div>
       <div class="modal-footer">

@@ -24,7 +24,7 @@ class ActivitiesController < ApplicationController
 
   def create
     @activity = Activity.new
-    @activity.name = params[:name]
+    @activity.name = params[:activity][:name]
     @activity.starting_time = Chronic.parse(params[:starting_time])
     @activity.ending_time = Chronic.parse(params[:ending_time])
     @activity.user_id = current_user.id

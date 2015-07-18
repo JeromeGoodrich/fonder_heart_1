@@ -1,10 +1,2 @@
-<%= render 'event_jumbotron' %>
 
-<%= render 'activities/activity_form' %>
-
-<% @activities = Activity.where(:event_id => params[:id]) %>
-
-<%= render 'activities/activity_card' %>
-
-<%= render 'activities/activity_modal' %>
 

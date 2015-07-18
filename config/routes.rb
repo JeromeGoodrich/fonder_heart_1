@@ -3,12 +3,15 @@ Rails.application.routes.draw do
 root 'events#index'
 devise_for :users, controllers: { registrations: 'registrations' }
 
-resources :activities
+resources :comments
+resources :users
 resources :calendar_accesses
 resources :calendars
-resources :comments
 resources :events
-resources :users
+resources :activities
+
+
+
 
 
 

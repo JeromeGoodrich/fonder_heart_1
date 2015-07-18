@@ -1,5 +1,5 @@
 <!-- Validation failure messages -->
-
+<%= form_for @calendar_access do |f| %>
 <% if @calendar_access.errors.any? %>
   <% @calendar_access.errors.full_messages.each do |message| %>
     <div class="alert alert-dismissable alert-danger">
@@ -9,7 +9,9 @@
   <% end %>
 <% end %>
 
-<!-- Responsive panel example -->
+<%= f.label :share_calendar_with %>
+<%= f.email :email, :calendar_access.user_id  %>
+<% end %>
 
 <div class="row">
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
