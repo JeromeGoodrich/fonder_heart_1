@@ -6,8 +6,9 @@
         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
-        <% @activity = Activity.find(params[:id]) %>
-        <%= render partial: 'activities/form' %>
+        <% existing_activity = Activity.find(activity_id) %>
+        <%# raise existing_activity.inspect %>
+        <%= render 'activities/form', activity: existing_activity %>
       </div>
     </div>
   </div>

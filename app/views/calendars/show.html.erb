@@ -2,13 +2,19 @@
 <%= render 'countdown' %>
 <br>
 
-
         <% @events = Event.where(:user_id => "#{current_user.id}", :calendar_id => "#{@calendar.id}") %>
         <% @events.each do |event| %>
 
         <%= render partial: 'events', locals: {event: event} %>
 
-        <%= render partial: '/events/activity_form', locals: {event: event} %>
+        <% zebra = Activity.new  %>
+        <div class ="col-md-12">
+        <div class="collapse" id="new_activity_collapse_<%= event.id %>">
+        <%= render 'activities/form', activity: zebra, event_id: event.id %>
+
+        </div>
+        </div>
+
 
         <%= render partial: 'activities', locals: {event: event} %>
 

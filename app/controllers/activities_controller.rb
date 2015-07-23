@@ -25,15 +25,18 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new
     @activity.name = params[:activity][:name]
-    @activity.starting_time = Chronic.parse(params[:starting_time])
-    @activity.ending_time = Chronic.parse(params[:ending_time])
+    @activity.starting_time = Chronic.parse(params[:activity][:starting_time])
+    @activity.ending_time = Chronic.parse(params[:activity][:ending_time])
     @activity.user_id = current_user.id
     @activity.event_id = params[:event_id]
     @activity.description = params[:description]
     @activity.image = params[:image]
 
+
+
+
     if @activity.save
-      redirect_to "/events", :notice => "Activity created successfully."
+      redirect_to "/calendars/#{@activity.calendar_id}", :notice => "Activity created successfully."
     else
       render 'new'
     end

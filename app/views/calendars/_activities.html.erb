@@ -19,9 +19,11 @@
                 <a href="#myModal" data-toggle="modal" data-target="#myModal"<span class="badge"><i class="fa fa-comments-o fa-lg"></i>10</span></a>
               </td>
             </tr>
+        <%# raise activity.inspect %>
+              <%= render '/activities/edit_modal', activity_id: activity.id %>
+
             <% end %>
           </table>
         </div>
 </div>
 
-<%= render partial: '/activities/edit_modal' %>

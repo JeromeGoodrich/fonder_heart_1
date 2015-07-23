@@ -24,10 +24,12 @@
           <% end %>
           <span class ="badge"><%= activity_count.size  %></span> Activites
         </button>
-        <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#activity_form_<%= event.id  %>"><i class="fa fa-plus"></i> Activity</button>
+        <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#new_activity_collapse_<%= event.id  %>"><i class="fa fa-plus"></i> New Activity</button>
       </div>
     </td>
   </tr>
 </table>
+
+
 
 <%= render partial: '/events/edit_modal' %>
