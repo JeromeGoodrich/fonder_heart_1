@@ -7,7 +7,7 @@
       </div>
       <div class="modal-body">
         <% @calendar_access = CalendarAccess.new %>
-        <%= render partial: 'share_calendar_form' %>
+        <%= render partial: '/calendar_accesses/form' %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

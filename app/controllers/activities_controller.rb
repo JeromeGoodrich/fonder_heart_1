@@ -28,7 +28,7 @@ class ActivitiesController < ApplicationController
     @activity.starting_time = Chronic.parse(params[:activity][:starting_time])
     @activity.ending_time = Chronic.parse(params[:activity][:ending_time])
     @activity.user_id = current_user.id
-    @activity.event_id = params[:event_id]
+    @activity.event_id = params[:activity][:event_id]
     @activity.description = params[:description]
     @activity.image = params[:image]
 
