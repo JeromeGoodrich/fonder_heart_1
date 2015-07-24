@@ -32,11 +32,8 @@ class ActivitiesController < ApplicationController
     @activity.description = params[:description]
     @activity.image = params[:image]
 
-
-
-
     if @activity.save
-      redirect_to "/calendars/#{@activity.calendar_id}", :notice => "Activity created successfully."
+      redirect_to :back, :notice => "Activity created successfully."
     else
       render 'new'
     end
