@@ -7,7 +7,7 @@ validates :starting_time, presence: true
 validates :ending_time, presence: true
 
 has_many :comments, dependent: :destroy
-has_many :activities
+has_many :activities, dependent: :destroy
 belongs_to :calendar
 belongs_to :user
 

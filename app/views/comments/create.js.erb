@@ -1,1 +1,1 @@
-$('#comments').append("<%= j render '/comments/activity_comments' %>");
+$('#comment_dialog_<%= @comment.activity_id %>').append('<%= j(render('comments/comment', comment: @comment)) %>');

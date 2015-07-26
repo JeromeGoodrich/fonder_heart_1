@@ -1,5 +1,5 @@
 
-<%= render 'countdown' %>
+<%= render 'calendar_header' %>
 
 <%= render partial: 'modal' %>
 
@@ -14,7 +14,8 @@
 
   <% events = Event.where(:user_id => "#{current_user.id}", :calendar_id => "#{@calendar.id}") %>
   <% events.each do |event| %>
-    <%= render partial: 'events', locals: {event: event} %>
+
+    <%= render partial: event, locals: {event: event} %>
 
     <%= render '/events/edit_modal', event: event %>
 
@@ -25,7 +26,7 @@
       </div>
     </div>
 
-    <%= render partial: 'activities', locals: {event: event} %>
+    <%= render partial: activity, locals: {event: event} %>
 
   <% end %>
 

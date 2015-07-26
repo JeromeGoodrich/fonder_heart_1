@@ -66,6 +66,13 @@ class ActivitiesController < ApplicationController
 
     @activity.destroy
 
-    redirect_to "/activities", :notice => "Activity deleted."
+    respond_to do |format|
+      format.html do
+        redirect_to :back, :notice => "Activity deleted."
+      end
+      format.js do
+        render('destroy.js.erb')
+      end
+    end
   end
 end

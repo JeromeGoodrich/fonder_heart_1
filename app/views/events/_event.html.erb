@@ -1,6 +1,6 @@
 <% activity_count = [] %>
 
-<table class="table table-responsive" id="event_table_<%= event.id %>">
+<table class="table table-responsive" id="event_<%= event.id %>">
 
   <tr class ="col-md-12">
     <td class="col-md-1">
@@ -9,7 +9,7 @@
 
     <td class="col-md-3">
       <h3><a href="#event_edit_modal_<%= event.id %>" data-toggle="modal" data-target="#event_edit_modal_<%= event.id %>"><i class="fa fa-edit"></i></a> <%= event.name %></h3>
-      <h3><%= link_to "Ajax Delete", event_path(event.id), method: :delete, remote: true, :class => 'btn btn-warning' %></h3>
+      <%= link_to "Delete", event_path(event.id), method: :delete, remote: true, :class => 'btn btn-warning' %>
     </td>
 
     <td class="col-md-3">

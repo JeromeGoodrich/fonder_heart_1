@@ -30,18 +30,18 @@ class CommentsController < ApplicationController
     @comment.body = params[:comment][:body]
     @comment.activity_id = params[:comment][:activity_id]
 
-    if @comment.save
-      redirect_to :back, :notice => "Comment created successfully."
-    else
-      render 'new'
+    respond_to do |format|
+      if @comment.save
+        format.html do
+          redirect_to :back, :notice => "Comment created successfully."
+        end
+        format.js do
+          render('create.js.erb')
+        end
+      else
+        render 'new'
+      end
     end
-    #respond_to do |format|
-      #if
-       # format.html {redirect_to "/events/#{@comment.event_id}", :notice => "Comment created successfully."}
-        #format.js
-      #end
-    #end
-
   end
 
   def edit
@@ -68,7 +68,13 @@ class CommentsController < ApplicationController
 
     @comment.destroy
 
-    redirect_to "/comments", :notice => "Comment deleted."
+    respond_to do |format|
+      format.html do
+        redirect_to :back, :notice => "Comment deleted."
+      end
+      format.js do
+        render('destroy.js.erb')
+      end
+    end
   end
 end
-

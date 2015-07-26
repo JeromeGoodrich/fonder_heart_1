@@ -64,9 +64,17 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     @event.destroy
-  repsond_to do |format|
 
-  end
-    redirect_to "/events", :notice => "Event deleted."
+    respond_to do |format|
+      format.html do
+        redirect_to :back, :notice => "Event deleted."
+      end
+
+      format.js do
+        render('destroy.js.erb')
+      end
+    end
+
+
   end
 end
