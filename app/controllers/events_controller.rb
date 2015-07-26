@@ -33,7 +33,7 @@ class EventsController < ApplicationController
     @event.image = params[:event][:image]
 
     if @event.save
-      redirect_to "/calendars/#{@event.calendar_id}", :notice => "Event created successfully."
+      redirect_to :back, :notice => "Event created successfully."
     else
       render 'new'
     end

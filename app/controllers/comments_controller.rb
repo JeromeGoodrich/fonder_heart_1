@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comment.calendar_id = params[:calendar_id]
     @comment.event_id = params[:event_id]
-    @comment.body = params[:body]
+    @comment.body = params[:comment][:body]
     @comment.activity_id = params[:comment][:activity_id]
 
     if @comment.save
@@ -54,7 +54,7 @@ class CommentsController < ApplicationController
     @comment.user_id = params[:user_id]
     @comment.calendar_id = params[:calendar_id]
     @comment.event_id = params[:event_id]
-    @comment.body = params[:body]
+    @comment.body = params[:comment][:body]
 
     if @comment.save
       redirect_to "/comments", :notice => "Comment updated successfully."

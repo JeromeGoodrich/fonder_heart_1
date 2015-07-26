@@ -55,7 +55,7 @@ class ActivitiesController < ApplicationController
     @activity.image = params[:image]
 
     if @activity.save
-      redirect_to "/events/#{@activity.event_id}", :notice => "Activity updated successfully."
+      redirect_to :back, :notice => "Activity updated successfully."
     else
       render 'edit'
     end
