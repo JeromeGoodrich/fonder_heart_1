@@ -1,4 +1,4 @@
-<div class="modal fade" id="event_edit_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="event_edit_modal_<%= event.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -6,9 +6,11 @@
         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
-        <% @event = Event.find(params[:id]) %>
-        <%= render partial: 'events/form' %>
+        <%# The below doesn't work because it's cycling through all the events that correspond to ids within the event_id_array. what it should be doing is pulling out a specific row from the Event model that corresponds to one of the ids in the even_id_array and doing that for each event. I need to create an instance variable @event or something that corresponds to the specific id of the correct row in the Event model. Typically this is done through params, but since the event_id doesn't make an appearance in the address bar it will take the calendar_id instead. I've told the form_for to explicitly do so by hard coding the value of :calendar_id. Right now I'm at a loss for how to do this. Hopefully a good night sleep will do the  %>
+        <%= event_id = event.id %>
+        <%= render '/events/form', event: event %>
       </div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
@@ -16,3 +18,4 @@
     </div>
   </div>
 </div>
+

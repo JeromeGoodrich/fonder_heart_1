@@ -40,21 +40,21 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:event][:id])
   end
 
   def update
     @event = Event.find(params[:id])
 
-    @event.user_id = params[:user_id]
-    @event.calendar_id = params[:calendar_id]
-    @event.name = params[:name]
-    @event.starting_time = params[:starting_time]
-    @event.ending_time = params[:ending_time]
+    @event.user_id = current_user.id
+    @event.calendar_id = params[:event][:calendar_id]
+    @event.name = params[:event][:name]
+    @event.starting_time = Chronic.parse(params[:event][:starting_time])
+    @event.ending_time = Chronic.parse(params[:event][:ending_time])
     @event.description = params[:description]
 
     if @event.save
-      redirect_to "/events", :notice => "Event updated successfully."
+      redirect_to :back, :notice => "Event updated successfully."
     else
       render 'edit'
     end

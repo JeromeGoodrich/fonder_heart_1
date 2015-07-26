@@ -5,33 +5,27 @@
 
 <%= render partial: 'edit_modal' %>
 
-<% @event = Event.new %>
 <div class="collapse" id="eventform">
-  <%= render partial: '/events/form' %>
+<%= render '/events/form', event: Event.new %>
 </div>
 
 <%= render partial: 'share_modal' %>
 <br>
 
-<% @events = Event.where(:user_id => "#{current_user.id}", :calendar_id => "#{@calendar.id}") %>
-<% @events.each do |event| %>
+  <% events = Event.where(:user_id => "#{current_user.id}", :calendar_id => "#{@calendar.id}") %>
+  <% events.each do |event| %>
+    <%= render partial: 'events', locals: {event: event} %>
 
-  <% @activities = Activity.where(:user_id => "#{current_user.id}", :event_id => "#{event.id}") %>
+    <%= render '/events/edit_modal', event: event %>
 
-  <%= render partial: 'events', locals: {event: event} %>
-
-  <%= render partial: '/events/edit_modal' %>
-
-  <% activity = Activity.new  %>
-  <div class ="col-md-12">
-    <div class="collapse" id="new_activity_collapse_<%= event.id %>">
-    <%= render 'activities/form', activity: activity, event_id: event.id %>
+    <% activity = Activity.new  %>
+    <div class ="col-md-12">
+      <div class="collapse" id="new_activity_collapse_<%= event.id %>">
+    <%= render 'activities/form', event_id: event.id, activity: activity %>
+      </div>
     </div>
-  </div>
 
-  <%= render partial: 'activities', locals: {event: event} %>
+    <%= render partial: 'activities', locals: {event: event} %>
 
-<% end %>
-
-
+  <% end %>
 

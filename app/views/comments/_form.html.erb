@@ -1,0 +1,15 @@
+
+<%= form_for comment do |f| %>
+
+<% if comment.errors.any? %>
+  <% comment.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= f.hidden_field :activity_id, value: activity.id %>
+<%= f.text_field :body, placeholder: "add a comment" %>
+<% end %>

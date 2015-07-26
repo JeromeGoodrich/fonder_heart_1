@@ -28,14 +28,19 @@ class CommentsController < ApplicationController
     @comment.calendar_id = params[:calendar_id]
     @comment.event_id = params[:event_id]
     @comment.body = params[:body]
-    @comment.activity_id = params[:activity_id]
+    @comment.activity_id = params[:comment][:activity_id]
 
-    respond_to do |format|
-      if @comment.save
-        format.html {redirect_to "/events/#{@comment.event_id}", :notice => "Comment created successfully."}
-        format.js
-      end
+    if @comment.save
+      redirect_to :back, :notice => "Comment created successfully."
+    else
+      render 'new'
     end
+    #respond_to do |format|
+      #if
+       # format.html {redirect_to "/events/#{@comment.event_id}", :notice => "Comment created successfully."}
+        #format.js
+      #end
+    #end
 
   end
 

@@ -1,10 +1,13 @@
+<% comment_count = [] %>
+
 <div class ="col-md-12">
 <div class="collapse" id="event_collapse_<%= event.id %>">
           <table class="table">
-            <% @activities.each do |activity| %>
+            <% activities = Activity.where(:user_id => "#{current_user.id}", :event_id => "#{event.id}") %>
+            <% activities.each do |activity| %>
             <tr>
               <td>
-                <a href="#activity_edit_modal" data-toggle="modal" data-target="#activity_edit_modal"><i class="fa fa-edit"></i></a>
+                <a href="#activity_edit_modal" data-toggle="modal" data-target="#activity_edit_modal_<%= activity.id %>"><i class="fa fa-edit"></i></a>
               </td>
 
               <td>
@@ -16,11 +19,15 @@
               </td>
 
               <td>
-                <a href="#myModal" data-toggle="modal" data-target="#myModal"<span class="badge"><i class="fa fa-comments-o fa-lg"></i>10</span></a>
+                <% comments = Comment.where(user_id: current_user, activity_id: activity.id) %>
+                <% comments.each do |comment| %>
+                <% comment_count.push comment %>
+                <% end %>
+                <a href="comments_modal_<%= activity.id %>" data-toggle="modal" data-target="#comments_modal_<%= activity.id %>"<span class="badge"><i class="fa fa-comments-o fa-lg"></i><%= comment_count.size %></span></a>
               </td>
             </tr>
-        <%# raise activity.inspect %>
-              <%= render '/activities/edit_modal', activity_id: activity.id %>
+              <%= render 'activities/edit_modal', activity: activity %>
+              <%= render '/comments/modal', activity: activity %>
 
             <% end %>
           </table>

@@ -1,4 +1,4 @@
-<div class="modal fade" id="activity_edit_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="activity_edit_modal_<%= activity.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -6,8 +6,7 @@
         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
-        <% existing_activity = Activity.find(activity_id) %>
-        <%# raise existing_activity.inspect %>
+        <% existing_activity = activity %>
         <%= render 'activities/form', activity: existing_activity %>
       </div>
     </div>
