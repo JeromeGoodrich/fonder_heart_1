@@ -32,10 +32,17 @@ class ActivitiesController < ApplicationController
     @activity.description = params[:description]
     @activity.image = params[:image]
 
-    if @activity.save
-      redirect_to :back, :notice => "Activity created successfully."
-    else
-      render 'new'
+    respond_to do |format|
+      if @activity.save
+        format.html do
+          redirect_to :back, :notice => "Activity created successfully."
+        end
+        format.js do
+          render('create.js.erb')
+        end
+      else
+          render 'new'
+      end
     end
   end
 

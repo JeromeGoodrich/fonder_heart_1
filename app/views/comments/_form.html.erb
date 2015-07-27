@@ -11,6 +11,6 @@
 <% end %>
 
 <%= f.hidden_field :activity_id, value: activity.id %>
-<%= f.text_field :body, placeholder: "add a comment", :class => 'form-control', :id => 'comment_body' %>
+<%= f.text_field :body, placeholder: "add a comment", :class => 'form-control', :id => "comment_body_#{activity.id}" %>
 <%= f.submit remote: true %>
 <% end %>

@@ -20,7 +20,8 @@
               </td>
 
               <td>
-                <% comments = Comment.where(user_id: current_user, activity_id: activity.id) %>
+                <% comments = Comment.where(user_id: current_user.id, activity_id: activity.id) %>
+
                 <% comments.each do |comment| %>
                 <% comment_count.push comment %>
                 <% end %>

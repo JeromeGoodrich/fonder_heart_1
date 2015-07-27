@@ -25,8 +25,8 @@ class CalendarAccessesController < ApplicationController
 
   def create
     @calendar_access = CalendarAccess.new
-    @calendar_access.user_id = current_user.id
-    @calendar_access.calendar_id = params[:calendar_id]
+    @calendar_access.user_id = params[:user_id]
+    @calendar_access.calendar_id = params[:calendar_access][:calendar_id]
 
     if @calendar_access.save
       redirect_to "/calendars/#{@calendar_access.calendar_id}", :notice => "calendar shared successfully."

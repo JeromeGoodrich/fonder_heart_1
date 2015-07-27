@@ -4,9 +4,12 @@ class CalendarsController < ApplicationController
 
   def ensure_current_user
     @calendars = Calendar.find(params[:id])
-    if @calendars.user_id != current_user.id
-      redirect_to root_url, :alert => "Sorry, you are not authorized to view this page"
-    end
+    @calendar_access = CalendarAccess.find_by(calendar_id: @calendars.id, user_id: current_user.id)
+      if @calendar_access.user_id != current_user.id
+        redirect_to root_url, :alert => "Sorry, you are not authorized to view this page"
+      end
+
+
 
   end
 

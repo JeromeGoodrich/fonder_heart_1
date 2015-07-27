@@ -11,8 +11,9 @@
 
 <div class="row">
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+  <%= f.hidden_field :calendar_id, value: params[:id] %>
   <%= f.label :share_Calendar_With %>
-  <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :email, @calendar_access.user_id), :class => "form-control") %>
+  <%= select_tag(:user_id, options_from_collection_for_select(User.where.not(id: current_user.id), :id, :email), :class => "form-control") %>
   <%= f.submit 'Share' %>
 <% end %>
   </div>
