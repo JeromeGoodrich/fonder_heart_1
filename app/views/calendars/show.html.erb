@@ -12,7 +12,7 @@
 <%= render partial: 'share_modal' %>
 <br>
 
-  <% events = Event.where(:user_id => "#{current_user.id}", :calendar_id => "#{@calendar.id}") %>
+  <% events = Event.where(calendar_id: @calendar.id) %>
   <% events.each do |event| %>
 
     <%= render partial: event, locals: {event: event} %>

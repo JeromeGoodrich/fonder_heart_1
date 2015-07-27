@@ -2,7 +2,7 @@
 
 <div class ="col-md-12">
 <div class="collapse" id="event_collapse_<%= event.id %>">
-          <% activities = Activity.where(:user_id => "#{current_user.id}", :event_id => "#{event.id}") %>
+          <% activities = Activity.where(event_id: event.id) %>
           <% activities.each do |activity| %>
           <table class="table" id="activity_<%= activity.id %>">
             <tr>
@@ -20,7 +20,7 @@
               </td>
 
               <td>
-                <% comments = Comment.where(user_id: current_user.id, activity_id: activity.id) %>
+                <% comments = Comment.where(activity_id: activity.id) %>
 
                 <% comments.each do |comment| %>
                 <% comment_count.push comment %>

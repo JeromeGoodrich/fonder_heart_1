@@ -19,7 +19,7 @@
     <td class="col-md-2">
       <div class="btn-group" role="group" aria-label="...">
         <button type="button" class="btn btn-default" data-toggle="collapse" href="#event_collapse_<%= event.id %>" aria-expanded="false" aria-controls="collapseExample">
-          <% activities = Activity.where(:user_id => "#{current_user.id}", :event_id => "#{event.id}") %>
+          <% activities = Activity.where(event_id: event.id) %>
 
           <% activities.each do |activity| %>
           <% activity_count.push activity %>
