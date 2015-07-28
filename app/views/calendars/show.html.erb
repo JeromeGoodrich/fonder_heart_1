@@ -15,9 +15,13 @@
   <% events = Event.where(calendar_id: @calendar.id) %>
   <% events.each do |event| %>
 
-    <%= render partial: event, locals: {event: event} %>
+    <%= render 'events/event', event: event %>
+
+    <%= render 'activities/activity', event: event %>
 
     <%= render '/events/edit_modal', event: event %>
+
+
 
     <% activity = Activity.new  %>
     <div class ="col-md-12">
@@ -26,7 +30,7 @@
       </div>
     </div>
 
-    <%= render partial: activity, locals: {event: event} %>
+
 
   <% end %>
 

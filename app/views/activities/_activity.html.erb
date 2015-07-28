@@ -4,11 +4,12 @@
 <div class="collapse" id="event_collapse_<%= event.id %>">
           <% activities = Activity.where(event_id: event.id) %>
           <% activities.each do |activity| %>
+
           <table class="table" id="activity_<%= activity.id %>">
             <tr>
               <td>
                 <a href="#activity_edit_modal" data-toggle="modal" data-target="#activity_edit_modal_<%= activity.id %>"><i class="fa fa-edit"></i></a>
-                <%= link_to "Delete", activity_path(activity.id), method: :delete, remote: true, :class => 'btn btn-warning' %>
+                <%= link_to "Delete", "/activities/#{activity.id}", method: :delete, remote: true, :class => 'btn btn-warning' %>
               </td>
 
               <td>
@@ -25,7 +26,7 @@
                 <% comments.each do |comment| %>
                 <% comment_count.push comment %>
                 <% end %>
-                <a href="comments_modal_<%= activity.id %>" data-toggle="modal" data-target="#comments_modal_<%= activity.id %>"<span class="badge"><i class="fa fa-comments-o fa-lg"></i><%= comment_count.size %></span></a>
+                <a href="comments_modal_<%= activity.id %>" data-toggle="modal" data-target="#comments_modal_<%= activity.id %>"><span class="badge"><i class="fa fa-comments-o fa-lg"></i><%= comment_count.size %></span></a>
               </td>
             </tr>
               <%= render 'activities/edit_modal', activity: activity %>

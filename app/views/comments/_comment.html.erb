@@ -1,6 +1,6 @@
 
   <p id="comment_<%= comment.id %>">
-  <%= comment.body %>
+  <%= comment.user.username %>: <%=comment.body %>
   <%= link_to 'Delete', comment_path(comment.id), method: :delete, :class => 'btn btn-warning', remote: true %>
   </p>
 
