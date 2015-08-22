@@ -34,7 +34,7 @@ class CalendarsController < ApplicationController
     @calendar.image = params[:image]
 
     if @calendar.save!
-      redirect_to :back, :notice => "Calendar created successfully."
+      redirect_to @calendar, :notice => "Calendar created successfully."
     else
       render 'new'
     end

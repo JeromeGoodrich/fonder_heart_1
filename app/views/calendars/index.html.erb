@@ -1,5 +1,31 @@
-<% if Calendar.find(user_id: current_user.id) == nil && CalendarAccess.find(user_id: current_user.id) == nil %>
-<!-- ask the user to get started by creating a calendar -->
+<% if Calendar.find_by(user_id: current_user.id) == nil && CalendarAccess.find_by(user_id: current_user.id) == nil %>
+
+<h1>Welcome <%= current_user.username %></h1>
+<h2>Get started by creating a new calendar</h2>
+<button class="btn btn-default btn-large" type="button" data-toggle="modal" data-target="#calendar_modal"><i class="fa fa-calendar fa-lg"></i>Create New Calendar</button>
+
+<%= render partial: 'modal'  %>
+
 <% else %>
-<!-- show the user the calendars they have access to -->
-<% end %>
+<div class="row">
+<div class="col-md-4">
+<button class="btn btn-default btn-large" type="button" data-toggle="modal" data-target="#calendar_modal"><i class="fa fa-calendar fa-lg"></i> Create New Calendar</button>
+</div>
+</div>
+<div class="row">
+  <% @calendars.each do |calendar| %>
+
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <a class href="/calendars/<%= calendar.id %>"><h3 class="panel-title"><%= calendar.title.upcase %></h3></a>
+      </div>
+      <div class="panel-body">
+        <img class="img-responsive" src="<%= calendar.image %>" alt="...">
+      </div>
+    </div>
+  </div>
+  <% end %>
+  </div>
+  <%= render partial: 'modal'  %>
+    <% end %>

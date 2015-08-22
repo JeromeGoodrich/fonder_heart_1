@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-root 'events#index'
+root 'calendars#index'
 
 devise_for :users#, controllers: { registrations: 'registrations' }
 
