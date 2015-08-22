@@ -1,1 +1,5 @@
-<h1><%= @calendar_access %></h1>
+<% if Calendar.find(user_id: current_user.id) == nil && CalendarAccess.find(user_id: current_user.id) == nil %>
+<!-- ask the user to get started by creating a calendar -->
+<% else %>
+<!-- show the user the calendars they have access to -->
+<% end %>

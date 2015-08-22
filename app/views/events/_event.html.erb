@@ -21,10 +21,7 @@
         <button type="button" class="btn btn-default" data-toggle="collapse" href="#event_collapse_<%= event.id %>" aria-expanded="false" aria-controls="collapseExample">
           <% activities = Activity.where(event_id: event.id) %>
 
-          <% activities.each do |activity| %>
-          <% activity_count.push activity %>
-          <% end %>
-          <span class ="badge"><%= activity_count.size  %></span> Activites
+          <span class ="badge"><%= activities.count %></span> Activites
         </button>
         <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#new_activity_collapse_<%= event.id  %>"><i class="fa fa-plus"></i> New Activity</button>
       </div>
